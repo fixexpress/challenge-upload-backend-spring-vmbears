@@ -4,6 +4,17 @@ challenge files upload backend
 see /doc folder
 
 
+Swagger API:
+http://localhost:8080/swagger-ui.html
+
+Swagger Documentation:
+http://localhost:8080/api-docs
+
+Doc file:
+http://localhost:8080/api-docs.yaml
+
+
+
 
 __________________________
 
