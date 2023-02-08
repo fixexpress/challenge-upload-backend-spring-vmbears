@@ -1,0 +1,45 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="agentes">
+    <xs:complexType>	
+      <xs:sequence>
+        <xs:element name="agente" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="codigo"/>
+              <xs:element type="xs:dateTime" name="data"/>
+              <xs:element name="regiao" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="geracao">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="valor" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="compra">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="valor" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="precoMedio">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="valor" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="sigla" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:float" name="versao"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

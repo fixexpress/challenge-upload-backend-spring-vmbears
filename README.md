@@ -14,11 +14,30 @@ Doc file:
 http://localhost:8080/api-docs.yaml
 
 
+Tools:
+generate classes to JABX
+	1) generate schema
+	https://www.freeformatter.com/xsd-generator.html#before-output
+	2) generate class
+		xjc agentes.xsd
+	*using JABX installer with jdk8
+validade xml
+	https://onlinexmltools.com/validate-xml
 
+
+Teste Service:
+curl -X POST http://localhost:8080/upload -F "file=@exemplo_01.xml"
+
+curl -X POST http://localhost:8080/upload -F "file=@/tmp/sample.txt"
+The -F option is used to send a file as the body of the request. The syntax "file=@sample.txt" indicates the file parameter name "file" and the path to the file "sample.txt".
+
+curl -X POST http://localhost:8080/upload -F "file=@/dev/teste/vmbears/docs/exemplo_01.xml"
+curl -X POST http://localhost:8080/upload -F "file=@c:\\dev\\teste\\vmbears\\docs\\exemplo_01.xml"
 
 __________________________
 
-Desafio
+Desafio:
+
 	Criar um sistema Web composto de um Front-end SPA (Single Page Application) Angular e um Back-end Java Spring Boot para envio de arquivos XML e posterior processamento deles.
 Requisitos
 Criar uma interface Web para upload de um ou mais arquivos com extensão .xml.
@@ -41,19 +60,24 @@ Recuperar um dado consolidado por região.
 
 Instruções
 Criar o sistema utilizando as seguintes tecnologias base:
+
 Front-end:
 Angular 12+
-Angular Material 12+
-Typescript 4+
-RxJS 6+
-NodeJS 14+
+
+	Angular Material 12+
+	Typescript 4+
+	RxJS 6+
+	NodeJS 14+
 
 Back-end:
-Spring Boot 2 
-Maven 3
-JPA
-Hibernate
+
+	Spring Boot 2 
+	Maven 3
+	JPA
+	Hibernate
 
 Banco de Dados:
 
 Disponibilizá-lo em um repositório Git público (exemplo: GitHub, Bitbucket).
+
+
