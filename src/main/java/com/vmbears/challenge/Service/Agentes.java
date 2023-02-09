@@ -1,4 +1,4 @@
-package com.vmbears.challenge.Entity; 
+package com.vmbears.challenge.Service; 
 
 
 import java.util.ArrayList;
@@ -232,30 +232,6 @@ public class Agentes {
         protected XMLGregorianCalendar data;
         protected List<Agentes.Agente.Regiao> regiao;
 
-//        private Agente() {
-//        	
-//        }
-//        
-//        private Agente(String codigo) {
-//        	this.codigo=codigo;
-//        }               
-//        
-//        public Agente create(String codigo, XMLGregorianCalendar data, List<Agentes.Agente.Regiao> regiao) {
-//        	Agente agente = new Agente();
-//            agente.codigo = codigo;
-//            agente.data=data;
-//            agente.regiao=regiao;
-//            return agente;
-//        }     
-//        
-//        public static Agente fromString(String codigo) {
-//            Agente agente = new Agente(codigo);
-//            agente.setCodigo(codigo);
-//            return agente;
-//        }    
-        
-        
-        
         /**
          * Obt�m o valor da propriedade codigo.
          * 
