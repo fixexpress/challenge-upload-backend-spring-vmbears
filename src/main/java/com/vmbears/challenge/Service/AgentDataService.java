@@ -3,7 +3,6 @@ package com.vmbears.challenge.Service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -120,19 +119,21 @@ public class AgentDataService {
 	    
     	agente.setRegioes(regioes);
 	    agentDataRepository.save(agente);
+
 	    
-	    
-	    System.out.println("Printing dados consolidados por Regiao");
-	    List<RegiaoConsolidada> dadosConsolidados=listarDadoConsolidadoPorRegiao();
-	    for (Iterator iterator = dadosConsolidados.iterator(); iterator.hasNext();) {
-			RegiaoConsolidada regiaoConsolidada = (RegiaoConsolidada) iterator.next();
-			
-			System.out.println("Sigla:"+regiaoConsolidada.getSigla());
-			System.out.println("compra média: \t"+regiaoConsolidada.getCompraMedia());
-			System.out.println("geração média: \t"+regiaoConsolidada.getGeracaoMedia());
-			System.out.println("preço médio: \t"+regiaoConsolidada.getPrecoMedioMedia());
-			
-		}
+//TODO: JUNIT class teste case -  only for test	    
+//	    System.out.println("\nPrinting dados consolidados por Regiao:");
+//	    List<RegiaoConsolidada> dadosConsolidados=listarDadoConsolidadoPorRegiao();
+//	    for (Iterator iterator = dadosConsolidados.iterator(); iterator.hasNext();) {
+//			RegiaoConsolidada regiaoConsolidada = (RegiaoConsolidada) iterator.next();
+//			
+//			System.out.println("\nSigla:"+regiaoConsolidada.getSigla());
+//			System.out.println("compra média: \t"+regiaoConsolidada.getCompraMedia());
+//			System.out.println("geração média: \t"+regiaoConsolidada.getGeracaoMedia());
+//			System.out.println("preço médio: \t"+regiaoConsolidada.getPrecoMedioMedia());
+//			
+//		}
+
 	    
     }
 	
