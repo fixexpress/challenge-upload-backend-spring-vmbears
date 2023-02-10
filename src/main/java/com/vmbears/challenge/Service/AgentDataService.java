@@ -122,12 +122,12 @@ public class AgentDataService {
 	    agentDataRepository.save(agente);
 	    
 	    
-	    System.out.println("Printing dados consolidados por Regiao");
+	    System.out.println("\nPrinting dados consolidados por Regiao:");
 	    List<RegiaoConsolidada> dadosConsolidados=listarDadoConsolidadoPorRegiao();
 	    for (Iterator iterator = dadosConsolidados.iterator(); iterator.hasNext();) {
 			RegiaoConsolidada regiaoConsolidada = (RegiaoConsolidada) iterator.next();
 			
-			System.out.println("Sigla:"+regiaoConsolidada.getSigla());
+			System.out.println("\nSigla:"+regiaoConsolidada.getSigla());
 			System.out.println("compra média: \t"+regiaoConsolidada.getCompraMedia());
 			System.out.println("geração média: \t"+regiaoConsolidada.getGeracaoMedia());
 			System.out.println("preço médio: \t"+regiaoConsolidada.getPrecoMedioMedia());
