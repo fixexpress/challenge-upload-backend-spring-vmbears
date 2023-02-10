@@ -7,3 +7,4 @@ import com.vmbears.challenge.Entity.Agente;
 public interface AgentDataRepository extends JpaRepository<Agente, Integer> {
 
 }
+

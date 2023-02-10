@@ -3,6 +3,7 @@ package com.vmbears.challenge.Service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -18,6 +19,7 @@ import com.vmbears.challenge.Entity.Geracao;
 import com.vmbears.challenge.Entity.PrecoMedio;
 import com.vmbears.challenge.Entity.Regiao;
 import com.vmbears.challenge.Repository.AgentDataRepository;
+import com.vmbears.challenge.Repository.RegiaoDataRepository;
 
 @Service
 public class AgentDataService {
@@ -25,6 +27,10 @@ public class AgentDataService {
 	@Autowired
 	private AgentDataRepository agentDataRepository;
 
+	@Autowired
+	private RegiaoDataRepository regiaoDataRepository;
+
+	
 	public AgentDataService() {
 	}
 
@@ -115,6 +121,64 @@ public class AgentDataService {
     	agente.setRegioes(regioes);
 	    agentDataRepository.save(agente);
 	    
+	    
+	    System.out.println("Printing dados consolidados por Regiao");
+	    List<RegiaoConsolidada> dadosConsolidados=listarDadoConsolidadoPorRegiao();
+	    for (Iterator iterator = dadosConsolidados.iterator(); iterator.hasNext();) {
+			RegiaoConsolidada regiaoConsolidada = (RegiaoConsolidada) iterator.next();
+			
+			System.out.println("Sigla:"+regiaoConsolidada.getSigla());
+			System.out.println("compra média: \t"+regiaoConsolidada.getCompraMedia());
+			System.out.println("geração média: \t"+regiaoConsolidada.getGeracaoMedia());
+			System.out.println("preço médio: \t"+regiaoConsolidada.getPrecoMedioMedia());
+			
+		}
+	    
     }
+	
+	
+	/**
+	 * List Dados consolidados por região usando como parametro a média de geração, compra e preço medio
+	 * @return 
+	 */
+	public List<RegiaoConsolidada> listarDadoConsolidadoPorRegiao() {
+		List<RegiaoConsolidada> dadosConsolidados = new ArrayList<>();
+
+		List<Regiao> regioes = regiaoDataRepository.findAll();
+		for (Regiao regiao : regioes) {
+			RegiaoConsolidada dadoConsolidado = new RegiaoConsolidada();
+			dadoConsolidado.setSigla(regiao.getSigla());
+
+			double somaGeracao = 0;
+			double somaCompra = 0;
+			double somaPrecoMedio = 0;
+			int contador = 0;
+
+			List<Geracao> geracoes = regiao.getGeracoes();
+			for (Geracao geracao : geracoes) {
+				somaGeracao += geracao.getValor();
+				contador++;
+			}
+
+			List<Compra> compras = regiao.getCompras();
+			for (Compra compra : compras) {
+				somaCompra += compra.getValor();
+			}
+
+			List<PrecoMedio> precosMedios = regiao.getPrecosMedios();
+			for (PrecoMedio precoMedio : precosMedios) {
+				somaPrecoMedio += precoMedio.getValor();
+			}
+
+			dadoConsolidado.setGeracaoMedia(somaGeracao / contador);
+			dadoConsolidado.setCompraMedia(somaCompra / contador);
+			dadoConsolidado.setPrecoMedioMedia(somaPrecoMedio / contador);
+
+			dadosConsolidados.add(dadoConsolidado);
+		}
+
+		return dadosConsolidados;
+	}
+
 
 }
