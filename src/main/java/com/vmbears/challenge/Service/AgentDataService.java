@@ -133,7 +133,6 @@ public class AgentDataService {
 //			System.out.println("preço médio: \t"+regiaoConsolidada.getPrecoMedioMedia());
 //			
 //		}
-
 	    
     }
 	
