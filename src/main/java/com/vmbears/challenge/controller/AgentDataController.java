@@ -1,5 +1,6 @@
 package com.vmbears.challenge.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +20,24 @@ public class AgentDataController {
 
     private final AgentDataService agentDataService;
 
+//TODO: Improvement: LOGS
+//TODO: Improvement: return status code and tratamento 200...
+//TODO: Improvement: assinc call multithread treatment
+//TODO: Improvement: teste cases Junit, mockit class for any
+//TODO: Treatment of exceptions   
+    
     @Autowired
     public AgentDataController(AgentDataService agentDataService) {
         this.agentDataService = agentDataService;
     }
 
     @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file[]) throws Exception {
+    public void uploadFile(@RequestParam("file") MultipartFile file[]) throws IOException {
     	agentDataService.uploadFile(file);
     }
 
     @GetMapping("/get-consolidated-data-by-region")
-    public ResponseEntity<List<RegiaoConsolidada>> getConsolidatedDataByRegion() {
+    public ResponseEntity<List<RegiaoConsolidada>> getConsolidatedDataByRegion() throws IOException{
         List<RegiaoConsolidada> consolidatedData = agentDataService.listarDadoConsolidadoPorRegiao();
         return new ResponseEntity<>(consolidatedData, HttpStatus.OK);
     }

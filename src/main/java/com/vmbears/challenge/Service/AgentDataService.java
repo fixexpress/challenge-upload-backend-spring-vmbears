@@ -1,6 +1,7 @@
 package com.vmbears.challenge.Service;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class AgentDataService {
 	public AgentDataService() {
 	}
 
-	public void uploadFile(MultipartFile file[]) throws Exception {
+	public void uploadFile(MultipartFile file[]) throws IOException {
 
 		try {
 
