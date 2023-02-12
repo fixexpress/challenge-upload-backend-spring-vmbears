@@ -1,7 +1,6 @@
 package com.vmbears.challenge.Service;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,19 +32,24 @@ public class AgentDataService {
 	public AgentDataService() {
 	}
 
-	public void uploadFile(MultipartFile file) throws IOException {
+	public void uploadFile(MultipartFile file[]) throws Exception {
 
 		try {
-			Agentes agentes = readDataFromMultipart(file);
-			System.out.println("Arquivo: " + file.getOriginalFilename());
-			System.out.println("Qtd.Agentes: " + agentes.getAgente().size());
-			for (int i = 0; i < agentes.getAgente().size(); i++) {
-				System.out.println("Códigos do agente : " + agentes.getAgente().get(i).getCodigo());
-				System.out.println("data: " + agentes.getAgente().get(i).getData());
 
-				this.persistAgente(agentes.getAgente().get(i));
+			for (int i = 0; i < file.length; i++) {
+
+				Agentes agentes = readDataFromMultipart(file[i]);
+				System.out.println("Arquivo: " + file[i].getOriginalFilename());
+				System.out.println("Qtd.Agentes: " + agentes.getAgente().size());
+				for (int x = 0; x < agentes.getAgente().size(); x++) {
+					System.out.println("Códigos do agente : " + agentes.getAgente().get(x).getCodigo());
+					System.out.println("data: " + agentes.getAgente().get(x).getData());
+
+					this.persistAgente(agentes.getAgente().get(x));
+				}
+				
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

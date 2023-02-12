@@ -1,6 +1,5 @@
 package com.vmbears.challenge.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class AgentDataController {
     }
 
     @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+    public void uploadFile(@RequestParam("file") MultipartFile file[]) throws Exception {
     	agentDataService.uploadFile(file);
     }
 
