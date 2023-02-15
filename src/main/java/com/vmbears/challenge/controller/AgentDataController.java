@@ -21,10 +21,11 @@ public class AgentDataController {
     private final AgentDataService agentDataService;
 
 //TODO: Improvement: LOGS
-//TODO: Improvement: return status code and tratamento 200...
+//TODO: Improvement: return status code and tratement 200 from Back...
 //TODO: Improvement: assinc call multithread treatment
 //TODO: Improvement: teste cases Junit, mockit class for any
 //TODO: Treatment of exceptions   
+//TODO: Perform better
     
     @Autowired
     public AgentDataController(AgentDataService agentDataService) {
